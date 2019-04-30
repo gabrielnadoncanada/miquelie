@@ -1,0 +1,492 @@
+2019-04-17T20:54:14+00:00 CRITICAL syntax error, unexpected 'the_title' (T_STRING) in /var/www/html/wp-content/themes/storefront-child/content.php on line 14
+
+2019-04-17T20:54:17+00:00 CRITICAL syntax error, unexpected 'the_title' (T_STRING) in /var/www/html/wp-content/themes/storefront-child/content.php on line 14
+
+2019-04-17T20:55:29+00:00 CRITICAL syntax error, unexpected 'do_action' (T_STRING) in /var/www/html/wp-content/themes/storefront-child/content.php on line 20
+
+2019-04-17T22:36:12+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:55
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 55
+
+2019-04-17T22:37:44+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:57
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 57
+
+2019-04-17T22:38:32+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:57
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 57
+
+2019-04-17T22:38:40+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:57
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/loop.php(21): get_template_part('content', '')
+#4 /var/www/html/wp-includes/template.php(706): require('/var/www/html/w...')
+#5 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#6 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#7 /var/www/html/wp-content/themes/storefront-child/archive.php(27): get_template_part('loop')
+#8 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#9 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#10 /var/www/html/i in /var/www/html/wp-content/themes/storefront-child/content.php on line 57
+
+2019-04-17T22:38:51+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:57
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 57
+
+2019-04-17T22:38:53+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:57
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 57
+
+2019-04-17T22:38:54+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:57
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 57
+
+2019-04-17T22:38:55+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:57
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 57
+
+2019-04-17T22:38:56+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:57
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 57
+
+2019-04-17T22:38:57+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:57
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 57
+
+2019-04-17T22:38:59+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:57
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 57
+
+2019-04-17T22:39:05+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:57
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/loop.php(21): get_template_part('content', '')
+#4 /var/www/html/wp-includes/template.php(706): require('/var/www/html/w...')
+#5 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#6 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#7 /var/www/html/wp-content/themes/storefront-child/archive.php(27): get_template_part('loop')
+#8 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#9 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#10 /var/www/html/i in /var/www/html/wp-content/themes/storefront-child/content.php on line 57
+
+2019-04-17T22:39:07+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:59
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/loop.php(21): get_template_part('content', '')
+#4 /var/www/html/wp-includes/template.php(706): require('/var/www/html/w...')
+#5 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#6 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#7 /var/www/html/wp-content/themes/storefront-child/archive.php(27): get_template_part('loop')
+#8 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#9 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#10 /var/www/html/i in /var/www/html/wp-content/themes/storefront-child/content.php on line 59
+
+2019-04-17T22:39:15+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:59
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 59
+
+2019-04-17T22:39:28+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:59
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 59
+
+2019-04-17T22:41:20+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:60
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 60
+
+2019-04-17T22:41:39+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:60
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 60
+
+2019-04-17T22:44:46+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:60
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 60
+
+2019-04-17T22:44:56+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:60
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 60
+
+2019-04-17T22:44:58+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:60
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 60
+
+2019-04-17T22:45:01+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:60
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 60
+
+2019-04-17T22:45:02+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:60
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 60
+
+2019-04-17T22:45:49+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:60
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 60
+
+2019-04-17T22:53:37+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:67
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 67
+
+2019-04-17T22:54:37+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:70
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 70
+
+2019-04-17T22:56:58+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:70
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 70
+
+2019-04-17T22:56:59+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:70
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 70
+
+2019-04-17T22:57:00+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:70
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 70
+
+2019-04-17T22:57:27+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:70
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 70
+
+2019-04-17T22:57:29+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:70
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 70
+
+2019-04-17T22:57:41+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:70
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 70
+
+2019-04-17T22:57:43+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:70
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 70
+
+2019-04-17T22:58:47+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:70
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 70
+
+2019-04-17T23:00:13+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:70
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 70
+
+2019-04-17T23:00:48+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:70
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 70
+
+2019-04-17T23:01:20+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:70
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 70
+
+2019-04-17T23:18:04+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:73
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 73
+
+2019-04-17T23:18:05+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:73
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 73
+
+2019-04-17T23:18:09+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:73
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 73
+
+2019-04-17T23:18:26+00:00 CRITICAL Uncaught Error: Call to undefined function raymondvoyage_posted_by() in /var/www/html/wp-content/themes/storefront-child/content.php:73
+Stack trace:
+#0 /var/www/html/wp-includes/template.php(706): require()
+#1 /var/www/html/wp-includes/template.php(653): load_template('/var/www/html/w...', false)
+#2 /var/www/html/wp-includes/general-template.php(157): locate_template(Array, true, false)
+#3 /var/www/html/wp-content/themes/storefront-child/single.php(19): get_template_part('content', 'post')
+#4 /var/www/html/wp-includes/template-loader.php(77): include('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-content/themes/storefront-child/content.php on line 73
+
