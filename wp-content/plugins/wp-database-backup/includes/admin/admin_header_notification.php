@@ -12,7 +12,7 @@ $coupon="Use Coupon code <strong>'WPDB30'</strong> and Get Flat 30% off on <stro
 $url = $notifier_file_url;
 $request = new WP_Http;
 $result = $request->request( $url );
-if(isset($result) && !empty($result)){
+if(isset($result['body']) && !empty($result['body'])){
   $notifier_data = $result['body'];
 }
 

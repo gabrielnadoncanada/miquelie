@@ -227,7 +227,7 @@
   table.cart td.product-remove a.remove {
     float: right;
   }
-  .cart-collaterals h2,
+  
   .woocommerce-breadcrumb {
     text-align: left;
   }
@@ -1117,9 +1117,9 @@ ul.products {
   .post-type-archive-product .left-sidebar .content-area {
     width: 73.9130434783%;
   }
-  .site-main ul.products.columns-5 li.product {
-    width: 17%;
-    margin-right: 1.6%;
+  .archive .site-main ul.products.columns-5 li.product {
+    width: 21%;
+    margin: 1.6%;
   }
   .storefront-sorting {
     display: block;
@@ -1227,6 +1227,11 @@ button:focus {
 	}
 }
 
+
+.post-54 header h1,
+.single-post h1.entry-title{
+	display: none;
+}
 
 
 /*# sourceMappingURL=style.css.map */

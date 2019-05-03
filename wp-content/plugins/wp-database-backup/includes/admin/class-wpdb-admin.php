@@ -53,246 +53,252 @@ class WPDB_Admin
                 $nonce = $_REQUEST['_wpnonce'];
                 if (!wp_verify_nonce($nonce, 'wp-database-backup')) die("WPDB :: Invalid Access");
             }
+
+            // End Fixed Vulnerability 04-08-2016 for data save in options
+
+          if (isset($_GET['page']) && $_GET['page'] == 'wp-database-backup' && current_user_can('manage_options')) {
+              setcookie('can_download', 1, 0, COOKIEPATH, COOKIE_DOMAIN);
+              if (SITECOOKIEPATH != COOKIEPATH) {
+                  setcookie('can_download', 1, 0, SITECOOKIEPATH, COOKIE_DOMAIN);
+              }
+          } else {
+              setcookie('can_download', 0, time() - 300, COOKIEPATH, COOKIE_DOMAIN);
+              if (SITECOOKIEPATH != COOKIEPATH) {
+                  setcookie('can_download', 0, time() - 300, SITECOOKIEPATH, COOKIE_DOMAIN);
+              }
+          }
+          // End Fixed Vulnerability 22-06-2016 for prevent direct download
+          if (is_admin() && current_user_can('manage_options')) {
+
+            if (isset($_REQUEST['_wpnonce']) && wp_verify_nonce($_REQUEST['_wpnonce'], 'wp-database-backup')) {
+
+              if (isset($_POST['wpsetting'])) {
+                  if (isset($_POST['wp_local_db_backup_count'])) {
+                      update_option('wp_local_db_backup_count', esc_attr(sanitize_text_field($_POST['wp_local_db_backup_count'])));
+                  }
+                  if (isset($_POST['wp_db_log'])) {
+                      update_option('wp_db_log', 1);
+                  } else {
+                      update_option('wp_db_log', 0);
+                  }
+                  if (isset($_POST['wp_db_remove_local_backup'])) {
+                      update_option('wp_db_remove_local_backup', 1);
+                  } else {
+                      update_option('wp_db_remove_local_backup', 0);
+                  }
+
+                  if (isset($_POST['wp_db_backup_enable_htaccess'])) {
+                      update_option('wp_db_backup_enable_htaccess', 1);
+                  } else {
+                      update_option('wp_db_backup_enable_htaccess', 0);
+                      $path_info = wp_upload_dir();
+                      @unlink($path_info['basedir'] . '/db-backup/.htaccess');
+                  }
+
+
+                  if (isset($_POST['wp_db_exclude_table'])) {
+                      update_option('wp_db_exclude_table', $_POST['wp_db_exclude_table']);
+                  } else {
+                      update_option('wp_db_exclude_table', '');
+                  }
+              }
+              if (isset($_POST['wp_db_backup_email_id'])) {
+
+                  update_option('wp_db_backup_email_id', esc_attr(sanitize_text_field($_POST['wp_db_backup_email_id'])));
+              }
+              if (isset($_POST['wp_db_backup_email_attachment'])) {
+                  $email_attachment = sanitize_text_field($_POST['wp_db_backup_email_attachment']);
+                  update_option('wp_db_backup_email_attachment',esc_attr($email_attachment));
+              }
+              if (isset($_POST['Submit']) && $_POST['Submit'] == 'Save Settings') {
+                  if (isset($_POST['wp_db_backup_destination_Email'])) {
+                      update_option('wp_db_backup_destination_Email', 1);
+                  } else {
+                      update_option('wp_db_backup_destination_Email', 0);
+                  }
+              }
+            }
+              $wp_db_backup_destination_Email = get_option('wp_db_backup_destination_Email');
+
+              if (isset($_GET['page']) && $_GET['page'] == "wp-database-backup" && isset($_GET['action']) && $_GET['action'] == "unlink") {
+                  // Specify the target directory and add forward slash
+                  $dir = plugin_dir_path(__FILE__) . "Destination/Dropbox/tokens/";
+
+                  // Open the directory
+                  $dirHandle = opendir($dir);
+                  // Loop over all of the files in the folder
+                  while ($file = readdir($dirHandle)) {
+                      // If $file is NOT a directory remove it
+                      if (!is_dir($file)) {
+                          unlink("$dir" . "$file"); // unlink() deletes the files
+                      }
+                  }
+                  // Close the directory
+                  closedir($dirHandle);
+                  wp_redirect(site_url() . '/wp-admin/tools.php?page=wp-database-backup');
+              }
+              $nonce = isset($_REQUEST['_wpnonce']) ? $_REQUEST['_wpnonce'] : '';
+              if (isset($_REQUEST['_wpnonce']) && wp_verify_nonce($nonce, 'wp-database-backup')) {
+                  if (isset($_GET['action']) && current_user_can('manage_options')) {
+                      switch ((string)$_GET['action']) {
+                          case 'createdbbackup':
+                              $this->wp_db_backup_event_process();
+                              wp_redirect(site_url() . '/wp-admin/tools.php?page=wp-database-backup&notification=create');
+                              break;
+                          case 'removebackup':
+                              $index = (int)$_GET['index'];
+                              $options = get_option('wp_db_backup_backups');
+                              $newoptions = array();
+                              $count = 0;
+                              foreach ($options as $option) {
+                                  if ($count != $index) {
+                                      $newoptions[] = $option;
+                                  }
+                                  $count++;
+                              }
+
+                              unlink($options[$index]['dir']);
+                              $sqlFile = explode('.', $options[$index]['dir']);
+                              @unlink($sqlFile[0] . '.sql');
+                              update_option('wp_db_backup_backups', $newoptions);
+                              wp_redirect(site_url() . '/wp-admin/tools.php?page=wp-database-backup&notification=delete');
+                              break;
+                          case 'clear_temp_db_backup_file':
+                              $options = get_option('wp_db_backup_backups');
+                              $newoptions = array();
+                              $backup_check_list = array('.htaccess', 'index.php');
+                              $deleteMessage = "WPDB : Deleted Files:";
+                              foreach ($options as $option) {
+                                  $backup_check_list[] = $option['filename'];
+                              }
+                              $path_info = wp_upload_dir();
+                              $wp_db_backup_path = $path_info['basedir'] . '/db-backup';
+                              // Open a directory, and read its contents
+                              if (is_dir($wp_db_backup_path)) {
+                                  if ($dh = opendir($wp_db_backup_path)) {
+                                      while (($file = readdir($dh)) !== false) {
+                                          if (!(in_array($file, $backup_check_list))) {
+                                              @unlink($wp_db_backup_path . '/' . $file);
+                                              $deleteMessage .= " " . $file;
+                                          }
+                                      }
+                                      closedir($dh);
+                                  }
+                                  error_log($deleteMessage);
+                              }
+                              wp_redirect(site_url() . '/wp-admin/tools.php?page=wp-database-backup&notification=clear_temp_db_backup_file');
+                              break;
+                          case 'restorebackup':
+                              $index = (int)$_GET['index'];
+                              $options = get_option('wp_db_backup_backups');
+                              $newoptions = array();
+                              $count = 0;
+                              foreach ($options as $option) {
+                                  if ($count != $index) {
+                                      $newoptions[] = $option;
+                                  }
+                                  $count++;
+                              }
+                              if (isset($options[$index]['sqlfile'])) { //Added for extract zip file V.3.3.0
+                                  $database_file = ($options[$index]['sqlfile']);
+                              } else {
+                                  $database_file = ($options[$index]['dir']);
+                                  $sqlFile = explode('.', $options[$index]['dir']);
+                                  $database_file = ($sqlFile[0] . '.sql');
+                              }
+                              $database_name = $this->wp_backup_get_config_db_name();
+                              $database_user = $this->wp_backup_get_config_data('DB_USER');
+                              $datadase_password = $this->wp_backup_get_config_data('DB_PASSWORD');
+                              $database_host = $this->wp_backup_get_config_data('DB_HOST');
+                              $path_info = wp_upload_dir();
+                              //Added for extract zip file V.3.3.0
+                              $ext_path_info = $path_info['basedir'] . '/db-backup';
+                              $database_zip_file = $options[$index]['dir'];
+
+                              if (class_exists('ZipArchive')) {
+                              error_log("Restore : Class ZipArchive");
+                                 $zip = new ZipArchive;
+                                      if ($zip->open($database_zip_file) === TRUE) {
+                                          $zip->extractTo($ext_path_info);
+                                          $zip->close();
+                                      }
+                              } else {
+                                  error_log("Restore : Class ZipArchive Not Present");
+                                  require_once( 'class-pclzip.php' );
+
+                                    $archive = new PclZip( $database_zip_file );
+                                    $dir = $path_info['basedir'].'/db-backup/';
+
+                                  if ( ! $archive->extract( PCLZIP_OPT_PATH, $dir ) )
+                                      wp_die( 'Unable to extract zip file. Please check that zlib php extension is enabled.', 'ZIP Error' );
+                              }
+
+                              //End for extract zip file V.3.3.0
+                              ini_set("max_execution_time", "5000");
+                              ini_set("max_input_time", "5000");
+                              ini_set('memory_limit', '1000M');
+                              set_time_limit(0);
+
+                              if ((trim((string)$database_name) != '') && (trim((string)$database_user) != '') && (trim((string)$datadase_password) != '') && (trim((string)$database_host) != '') && ($conn = @mysqli_connect((string)$database_host, (string)$database_user, (string)$datadase_password))) {
+                                  /* BEGIN: Select the Database */
+                                  if (!mysqli_select_db((string)$database_name, $conn)) {
+                                      $sql = "CREATE DATABASE IF NOT EXISTS `" . (string)$database_name . "`";
+                                      mysqli_query($sql, $conn);
+                                      mysqli_select_db((string)$database_name, $conn);
+                                  }
+                                  /* END: Select the Database */
+
+                                  /* BEGIN: Remove All Tables from the Database */
+                                  $found_tables = null;
+                                  if ($result = mysqli_query("SHOW TABLES FROM `{" . (string)$database_name . "}`", $conn)) {
+                                      while ($row = mysqli_fetch_row($result)) {
+                                          $found_tables[] = $row[0];
+                                      }
+                                      if (count($found_tables) > 0) {
+                                          foreach ($found_tables as $table_name) {
+                                              mysqli_query("DROP TABLE `{" . (string)$database_name . "}`.{$table_name}", $conn);
+                                          }
+                                      }
+                                  }
+                                  /* END: Remove All Tables from the Database */
+
+                                  /* BEGIN: Restore Database Content */
+                                  if (isset($database_file)) {
+
+                                      $database_file = $database_file;
+                                      $sql_file = @file_get_contents($database_file, true);
+
+                                      $sql_queries = explode(";\n", $sql_file);
+
+
+                                      for ($i = 0; $i < count($sql_queries); $i++) {
+                                          mysqli_query($sql_queries[$i], $conn);
+                                      }
+                                  }
+                              }
+                              if (isset($options[$index]['sqlfile']) && file_exists($options[$index]['sqlfile'])) { //Added for extract zip file V.3.3.0
+                                  @unlink($options[$index]['sqlfile']);
+                              } else {
+                                  $database_file = ($options[$index]['dir']);
+                                  $sqlFile = explode('.', $options[$index]['dir']);
+                                  $database_file = ($sqlFile[0] . '.sql');
+                                  @unlink($database_file);
+                              }
+                              wp_redirect(site_url() . '/wp-admin/tools.php?page=wp-database-backup&notification=restore');
+                              break;
+
+                          /* END: Restore Database Content */
+                      }
+                  }
+              }
+
         }
-        // End Fixed Vulnerability 04-08-2016 for data save in options
-
-        if (isset($_GET['page']) && $_GET['page'] == 'wp-database-backup' && current_user_can('manage_options')) {
-            setcookie('can_download', 1, 0, COOKIEPATH, COOKIE_DOMAIN);
-            if (SITECOOKIEPATH != COOKIEPATH) {
-                setcookie('can_download', 1, 0, SITECOOKIEPATH, COOKIE_DOMAIN);
-            }
-        } else {
-            setcookie('can_download', 0, time() - 300, COOKIEPATH, COOKIE_DOMAIN);
-            if (SITECOOKIEPATH != COOKIEPATH) {
-                setcookie('can_download', 0, time() - 300, SITECOOKIEPATH, COOKIE_DOMAIN);
-            }
         }
-        // End Fixed Vulnerability 22-06-2016 for prevent direct download
-        if (is_admin()) {
-            if (isset($_POST['wpsetting'])) {
-                if (isset($_POST['wp_local_db_backup_count'])) {
-                    update_option('wp_local_db_backup_count', esc_attr(sanitize_text_field($_POST['wp_local_db_backup_count'])));
-                }
-                if (isset($_POST['wp_db_log'])) {
-                    update_option('wp_db_log', 1);
-                } else {
-                    update_option('wp_db_log', 0);
-                }
-                if (isset($_POST['wp_db_remove_local_backup'])) {
-                    update_option('wp_db_remove_local_backup', 1);
-                } else {
-                    update_option('wp_db_remove_local_backup', 0);
-                }
 
-                if (isset($_POST['wp_db_backup_enable_htaccess'])) {
-                    update_option('wp_db_backup_enable_htaccess', 1);
-                } else {
-                    update_option('wp_db_backup_enable_htaccess', 0);
-                    $path_info = wp_upload_dir();
-                    @unlink($path_info['basedir'] . '/db-backup/.htaccess');
-                }
-
-
-                if (isset($_POST['wp_db_exclude_table'])) {
-                    update_option('wp_db_exclude_table', $_POST['wp_db_exclude_table']);
-                } else {
-                    update_option('wp_db_exclude_table', '');
-                }
-            }
-            if (isset($_POST['wp_db_backup_email_id'])) {
-
-                update_option('wp_db_backup_email_id', esc_attr(sanitize_text_field($_POST['wp_db_backup_email_id'])));
-            }
-            if (isset($_POST['wp_db_backup_email_attachment'])) {
-                $email_attachment = sanitize_text_field($_POST['wp_db_backup_email_attachment']);
-                update_option('wp_db_backup_email_attachment',esc_attr($email_attachment));
-            }
-            if (isset($_POST['Submit']) && $_POST['Submit'] == 'Save Settings') {
-                if (isset($_POST['wp_db_backup_destination_Email'])) {
-                    update_option('wp_db_backup_destination_Email', 1);
-                } else {
-                    update_option('wp_db_backup_destination_Email', 0);
-                }
-            }
-            $wp_db_backup_destination_Email = get_option('wp_db_backup_destination_Email');
-
-            if (isset($_GET['page']) && $_GET['page'] == "wp-database-backup" && isset($_GET['action']) && $_GET['action'] == "unlink") {
-                // Specify the target directory and add forward slash
-                $dir = plugin_dir_path(__FILE__) . "Destination/Dropbox/tokens/";
-
-                // Open the directory
-                $dirHandle = opendir($dir);
-                // Loop over all of the files in the folder
-                while ($file = readdir($dirHandle)) {
-                    // If $file is NOT a directory remove it
-                    if (!is_dir($file)) {
-                        unlink("$dir" . "$file"); // unlink() deletes the files
-                    }
-                }
-                // Close the directory
-                closedir($dirHandle);
-                wp_redirect(site_url() . '/wp-admin/tools.php?page=wp-database-backup');
-            }
-            $nonce = isset($_REQUEST['_wpnonce']) ? $_REQUEST['_wpnonce'] : '';
-            if (isset($_REQUEST['_wpnonce']) && wp_verify_nonce($nonce, 'wp-database-backup')) {
-                if (isset($_GET['action']) && current_user_can('manage_options')) {
-                    switch ((string)$_GET['action']) {
-                        case 'createdbbackup':
-                            $this->wp_db_backup_event_process();
-                            wp_redirect(site_url() . '/wp-admin/tools.php?page=wp-database-backup&notification=create');
-                            break;
-                        case 'removebackup':
-                            $index = (int)$_GET['index'];
-                            $options = get_option('wp_db_backup_backups');
-                            $newoptions = array();
-                            $count = 0;
-                            foreach ($options as $option) {
-                                if ($count != $index) {
-                                    $newoptions[] = $option;
-                                }
-                                $count++;
-                            }
-
-                            unlink($options[$index]['dir']);
-                            $sqlFile = explode('.', $options[$index]['dir']);
-                            @unlink($sqlFile[0] . '.sql');
-                            update_option('wp_db_backup_backups', $newoptions);
-                            wp_redirect(site_url() . '/wp-admin/tools.php?page=wp-database-backup&notification=delete');
-                            break;
-                        case 'clear_temp_db_backup_file':
-                            $options = get_option('wp_db_backup_backups');
-                            $newoptions = array();
-                            $backup_check_list = array('.htaccess', 'index.php');
-                            $deleteMessage = "WPDB : Deleted Files:";
-                            foreach ($options as $option) {
-                                $backup_check_list[] = $option['filename'];
-                            }
-                            $path_info = wp_upload_dir();
-                            $wp_db_backup_path = $path_info['basedir'] . '/db-backup';
-                            // Open a directory, and read its contents
-                            if (is_dir($wp_db_backup_path)) {
-                                if ($dh = opendir($wp_db_backup_path)) {
-                                    while (($file = readdir($dh)) !== false) {
-                                        if (!(in_array($file, $backup_check_list))) {
-                                            @unlink($wp_db_backup_path . '/' . $file);
-                                            $deleteMessage .= " " . $file;
-                                        }
-                                    }
-                                    closedir($dh);
-                                }
-                                error_log($deleteMessage);
-                            }
-                            wp_redirect(site_url() . '/wp-admin/tools.php?page=wp-database-backup&notification=clear_temp_db_backup_file');
-                            break;
-                        case 'restorebackup':
-                            $index = (int)$_GET['index'];
-                            $options = get_option('wp_db_backup_backups');
-                            $newoptions = array();
-                            $count = 0;
-                            foreach ($options as $option) {
-                                if ($count != $index) {
-                                    $newoptions[] = $option;
-                                }
-                                $count++;
-                            }
-                            if (isset($options[$index]['sqlfile'])) { //Added for extract zip file V.3.3.0
-                                $database_file = ($options[$index]['sqlfile']);
-                            } else {
-                                $database_file = ($options[$index]['dir']);
-                                $sqlFile = explode('.', $options[$index]['dir']);
-                                $database_file = ($sqlFile[0] . '.sql');
-                            }
-                            $database_name = $this->wp_backup_get_config_db_name();
-                            $database_user = $this->wp_backup_get_config_data('DB_USER');
-                            $datadase_password = $this->wp_backup_get_config_data('DB_PASSWORD');
-                            $database_host = $this->wp_backup_get_config_data('DB_HOST');
-                            $path_info = wp_upload_dir();
-                            //Added for extract zip file V.3.3.0
-                            $ext_path_info = $path_info['basedir'] . '/db-backup';
-                            $database_zip_file = $options[$index]['dir'];
-
-                            if (class_exists('ZipArchive')) {
-                            error_log("Restore : Class ZipArchive");
-                               $zip = new ZipArchive;
-                                    if ($zip->open($database_zip_file) === TRUE) {
-                                        $zip->extractTo($ext_path_info);
-                                        $zip->close();
-                                    }
-                            } else {
-                                error_log("Restore : Class ZipArchive Not Present");
-                                require_once( 'class-pclzip.php' );
-
-                                  $archive = new PclZip( $database_zip_file );
-                                  $dir = $path_info['basedir'].'/db-backup/';
-
-                                if ( ! $archive->extract( PCLZIP_OPT_PATH, $dir ) )
-                                    wp_die( 'Unable to extract zip file. Please check that zlib php extension is enabled.', 'ZIP Error' );
-                            }
-
-
-                            //End for extract zip file V.3.3.0
-                            ini_set("max_execution_time", "5000");
-                            ini_set("max_input_time", "5000");
-                            ini_set('memory_limit', '1000M');
-                            set_time_limit(0);
-
-
-                            if ((trim((string)$database_name) != '') && (trim((string)$database_user) != '') && (trim((string)$datadase_password) != '') && (trim((string)$database_host) != '') && ($conn = @mysqli_connect((string)$database_host, (string)$database_user, (string)$datadase_password))) {
-                                /* BEGIN: Select the Database */
-                                if (!mysqli_select_db((string)$database_name, $conn)) {
-                                    $sql = "CREATE DATABASE IF NOT EXISTS `" . (string)$database_name . "`";
-                                    mysqli_query($sql, $conn);
-                                    mysqli_select_db((string)$database_name, $conn);
-                                }
-                                /* END: Select the Database */
-
-                                /* BEGIN: Remove All Tables from the Database */
-                                $found_tables = null;
-                                if ($result = mysqli_query("SHOW TABLES FROM `{" . (string)$database_name . "}`", $conn)) {
-                                    while ($row = mysqli_fetch_row($result)) {
-                                        $found_tables[] = $row[0];
-                                    }
-                                    if (count($found_tables) > 0) {
-                                        foreach ($found_tables as $table_name) {
-                                            mysqli_query("DROP TABLE `{" . (string)$database_name . "}`.{$table_name}", $conn);
-                                        }
-                                    }
-                                }
-                                /* END: Remove All Tables from the Database */
-
-                                /* BEGIN: Restore Database Content */
-                                if (isset($database_file)) {
-
-                                    $database_file = $database_file;
-                                    $sql_file = @file_get_contents($database_file, true);
-
-                                    $sql_queries = explode(";\n", $sql_file);
-
-
-                                    for ($i = 0; $i < count($sql_queries); $i++) {
-                                        mysqli_query($sql_queries[$i], $conn);
-                                    }
-                                }
-                            }
-                            if (isset($options[$index]['sqlfile']) && file_exists($options[$index]['sqlfile'])) { //Added for extract zip file V.3.3.0
-                                @unlink($options[$index]['sqlfile']);
-                            } else {
-                                $database_file = ($options[$index]['dir']);
-                                $sqlFile = explode('.', $options[$index]['dir']);
-                                $database_file = ($sqlFile[0] . '.sql');
-                                @unlink($database_file);
-                            }
-                            wp_redirect(site_url() . '/wp-admin/tools.php?page=wp-database-backup&notification=restore');
-                            break;
-
-                        /* END: Restore Database Content */
-                    }
-                }
-            }
-
-            register_setting('wp_db_backup_options', 'wp_db_backup_options', array($this, 'wp_db_backup_validate'));
-            @add_settings_section('wp_db_backup_main', '', 'wp_db_backup_section_text', array($this, 'wp-database-backup'));
-        }
+       if (is_admin() && current_user_can('manage_options')) {
+         register_setting('wp_db_backup_options', 'wp_db_backup_options', array($this, 'wp_db_backup_validate'));
+         @add_settings_section('wp_db_backup_main', '', 'wp_db_backup_section_text', array($this, 'wp-database-backup'));
+       }
     }
 
     function wp_db_backup_validate($input)
@@ -327,7 +333,7 @@ class WPDB_Admin
                     </button>
                 </div>
                 </div><?php } ?>
-            <div class="panel panel-info">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3><a href="http://www.wpseeds.com/documentation/docs/wp-database-backup/" target="blank"><img
                                 src="<?php echo WPDB_PLUGIN_URL . '/assets/images/wp-database-backup.png'; ?>"></a>Database

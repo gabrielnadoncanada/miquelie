@@ -16,13 +16,15 @@ if (isset($_GET['action']) && $_GET['action'] == 'deleteauth') {
 
 $dropbox = new WPDBBackup_Destination_Dropbox_API('dropbox');
 $dropbox_auth_url = $dropbox->oAuthAuthorize();
-if (isset($_POST['wpdb_dropbbox_code']) && !empty($_POST['wpdb_dropbbox_code'])) {
-    $dropboxtoken = $dropbox->oAuthToken(sanitize_text_field($_POST['wpdb_dropbbox_code']));
-    $dropboxtoken = update_option('wpdb_dropboxtoken', maybe_serialize($dropboxtoken));
-}
+  if (isset($_REQUEST['_wpnonce']) && wp_verify_nonce($_REQUEST['_wpnonce'], 'wp-database-backup')) {
+    if (isset($_POST['wpdb_dropbbox_code']) && !empty($_POST['wpdb_dropbbox_code'])) {
+        $dropboxtoken = $dropbox->oAuthToken(sanitize_text_field($_POST['wpdb_dropbbox_code']));
+        $dropboxtoken = update_option('wpdb_dropboxtoken', maybe_serialize($dropboxtoken));
+    }
 
-if (isset($_POST['wpdb_dropbbox_dir'])) {
-    $dropboxtoken = update_option('wpdb_dropbbox_dir', esc_attr(sanitize_text_field($_POST['wpdb_dropbbox_dir'])));
+    if (isset($_POST['wpdb_dropbbox_dir'])) {
+        $dropboxtoken = update_option('wpdb_dropbbox_dir', esc_attr(sanitize_text_field($_POST['wpdb_dropbbox_dir'])));
+    }
 }
 
 $wpdb_dropboxtoken=get_option('wpdb_dropboxtoken');
